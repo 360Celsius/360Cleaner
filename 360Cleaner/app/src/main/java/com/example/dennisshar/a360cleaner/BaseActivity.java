@@ -1,5 +1,6 @@
 package com.example.dennisshar.a360cleaner;
 
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -7,7 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.dennisshar.a360cleaner.reciver.CleanerBroadCastReciver;
+import com.example.dennisshar.a360cleaner.service.CleanerService;
+
 public class BaseActivity extends AppCompatActivity {
+
+    private static IntentFilter filter = null;
+    private static CleanerBroadCastReciver receiver = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +34,20 @@ public class BaseActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        filter = new IntentFilter(CleanerService.GET_DATA);
+        receiver = new CleanerBroadCastReciver();
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
     }
 
 }

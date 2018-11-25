@@ -19,6 +19,13 @@
 
         <activity android:name=".MainActivity"> </activity>
 
+
+        <service
+            android:name=".service.CleanerService"
+            android:exported="false"/>
+
+        <receiver android:name=".reciver.CleanerBroadCastReciver" />
+
     </application>
 
 </manifest>
