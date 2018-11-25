@@ -22,7 +22,7 @@ public class SplashActivity extends BaseActivity {
                 startService(msgIntent);
 
             }
-        }, 3000);   //3 seconds
+        }, 5000);   //3 seconds
 
 
     }
