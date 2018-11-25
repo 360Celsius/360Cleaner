@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/endColor">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/logo_text_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginRight="6dp"
+                android:text="@string/logo_text_left"/>
+
+            <ImageView
+                android:id="@+id/logo_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="1dp"
+                android:layout_alignTop="@+id/logo_text_left"
+                android:layout_toRightOf="@+id/logo_text_left"
+                android:src="@drawable/ic_donut_small" />
+
+            <TextView
+                android:id="@+id/logo_text_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_alignBaseline="@+id/logo_text_left"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/logo_image"
+                android:text="@string/logo_text_right"/>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+</RelativeLayout>

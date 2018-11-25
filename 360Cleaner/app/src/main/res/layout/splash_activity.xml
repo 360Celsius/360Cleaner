@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/endColor">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/logo_text_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginRight="6dp"
+            android:text="@string/logo_text_left"/>
+
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
+            android:layout_alignTop="@+id/logo_text_left"
+            android:layout_toRightOf="@+id/logo_text_left"
+            android:src="@drawable/ic_donut_small" />
+
+        <TextView
+            android:id="@+id/logo_text_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_alignBaseline="@+id/logo_text_left"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/logo_image"
+            android:text="@string/logo_text_right"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
