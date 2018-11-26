@@ -8,13 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.dennisshar.a360cleaner.dbhelper.DatabaseHelper;
+import com.example.dennisshar.a360cleaner.interfaces.DataBaseHelperInterface;
+import com.example.dennisshar.a360cleaner.interfaces.ModelIngterface;
+import com.example.dennisshar.a360cleaner.model.CleanerModel;
 import com.example.dennisshar.a360cleaner.reciver.CleanerBroadCastReciver;
 import com.example.dennisshar.a360cleaner.service.CleanerService;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements ModelIngterface,DataBaseHelperInterface{
 
     private static IntentFilter filter = null;
     private static CleanerBroadCastReciver receiver = null;
+
+    public static CleanerModel cleanerModel = null;
+    public static DatabaseHelper helper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,8 @@ public class BaseActivity extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.endColor));
         }
 
-
+        cleanerModel = CleanerModel.getInstance(getApplicationContext());
+        helper = DatabaseHelper.getInstance(getApplicationContext());
     }
 
     @Override
@@ -50,4 +58,13 @@ public class BaseActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
     }
 
+    @Override
+    public CleanerModel getCleanerModel() {
+        return cleanerModel;
+    }
+
+    @Override
+    public DatabaseHelper getDataBasehelper() {
+        return helper;
+    }
 }
