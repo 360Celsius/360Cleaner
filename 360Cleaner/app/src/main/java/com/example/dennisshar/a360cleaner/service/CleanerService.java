@@ -50,7 +50,7 @@ public class CleanerService extends IntentService {
 
             cleanerModel.getDeviceMemoryStatus();
 
-
+            cleanerModel.getDeviceCPUstatus();
 
 
             Intent broadcastIntent = new Intent();

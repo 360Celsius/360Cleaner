@@ -3,6 +3,7 @@ package com.example.dennisshar.a360cleaner.model;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 
+import com.example.dennisshar.a360cleaner.datamodels.DeviceCPUInfoModel;
 import com.example.dennisshar.a360cleaner.datamodels.DeviceMemoryStatusModel;
 
 import java.io.BufferedReader;
@@ -166,6 +167,71 @@ public class CleanerModel {
 
 
         return deviceMemoryStatusModel;
+    }
+
+    public DeviceCPUInfoModel getDeviceCPUstatus(){
+        DeviceCPUInfoModel deviceCPUInfoModel = new DeviceCPUInfoModel();
+        BufferedReader reader = null;
+        StringBuilder logBuilder = null;
+        //memory global info
+        try {
+            reader = new BufferedReader(new FileReader("/proc/cpuinfo"));
+            logBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                logBuilder.append(line);
+                String key = line.split(":")[0];
+                String value = line.split(":")[1].trim();
+
+               if(key.contains("processor")){
+                    deviceCPUInfoModel.setProcessor(value);
+
+                }else if(key.contains("vendor_id")){
+                    deviceCPUInfoModel.setVendor_id(value);
+
+                }else if(key.contains("cpu family")){
+                    deviceCPUInfoModel.setCpu_family(value);
+
+                }else if(key.contains("model")){
+                    deviceCPUInfoModel.setModel(value);
+
+                }else if(key.contains("model name")){
+                    deviceCPUInfoModel.setModel_name(value);
+
+                }else if(key.contains("cpu MHz")){
+                    deviceCPUInfoModel.setCpu_MHz(value);
+
+                }else if(key.contains("cache size")){
+                    deviceCPUInfoModel.setCache_size(value);
+
+                }else if(key.contains("physical id")){
+                    deviceCPUInfoModel.setPhysical_id(value);
+
+                }else if(key.contains("siblings")){
+                    deviceCPUInfoModel.setSiblings(value);
+
+                }else if(key.contains("core id")){
+                    deviceCPUInfoModel.setCore_id(value);
+
+                }else if(key.contains("cpu cores")){
+                    deviceCPUInfoModel.setCpu_cores(value);
+
+                }else if(key.contains("flags")){
+                    deviceCPUInfoModel.setFlags(value);
+
+                }else if(key.contains("address_sizes")){
+                    deviceCPUInfoModel.setAddress_sizes(value);
+
+                }
+
+                deviceCPUInfoModel.setDateOfMeasurment(String.valueOf(getCurrentTimeStamp()));
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return deviceCPUInfoModel;
     }
 
     private long getCurrentTimeStamp(){
